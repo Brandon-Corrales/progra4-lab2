@@ -1,22 +1,17 @@
-import { useCounter } from "../Hooks/useCounter"
+import { useCounter } from "../Hooks/useCounter";
 
-export default function Counter() {
-    const { count, increaseCount, dicreaseCount, restartCount } = useCounter()
+function App() {
+    const { count, increaseCount, decreaseCount, restartCount, reachedFavorite } = useCounter();
+
     return (
-        <div className="card">
-            <p>{count}</p>
-            <button onClick={increaseCount} style={{ marginRight: "10px" }}>
-                ➕
-            </button>
-
-            <button onClick={dicreaseCount}>
-                ➖
-            </button>
-
-
-            <button onClick={restartCount} style={{}}>
-                <>Restart Counter</>
-            </button>
+        <div>
+            <h1>Contador: {count}</h1>
+            {reachedFavorite && <p style={{ color: "green" }}>{reachedFavorite}</p>}
+            <button onClick={increaseCount} style={{ margin: "5px", padding: "10px", fontSize: "16px" }}>➕</button>
+            <button onClick={decreaseCount} style={{ margin: "5px", padding: "10px", fontSize: "16px" }}>➖</button>
+            <button onClick={restartCount} style={{ margin: "10px", padding: "8px", fontSize: "15px" }}>Reiniciar</button>
         </div>
-    )
+    );
 }
+
+export default App;
